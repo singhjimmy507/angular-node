@@ -5,7 +5,10 @@ import { Component } from '@angular/core';
     templateUrl: './post-create.component.html'
 })
 export class PostCreateComponent {
+    newPost = ''; //Property of class. Doesn't require const, var, let
+    
     onAddPost(){
-        alert('Post added');
+        // alert('Post added');
+        this.newPost='New post added';
     }
 }
