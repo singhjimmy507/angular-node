@@ -6,9 +6,10 @@ import { Component } from '@angular/core';
 })
 export class PostCreateComponent {
     newPost = ''; //Property of class. Doesn't require const, var, let
-    
-    onAddPost(){
+
+    onAddPost(postInput: HTMLTextAreaElement){
         // alert('Post added');
-        this.newPost='New post added';
+        
+        this.newPost = postInput.value;
     }
 }

@@ -1,3 +1,5 @@
 <h1>Getting started</h1>
-<button (click)="onAddPost()">Add Post</button> <!-- Event listenening is referred as Event Binding -->
-<p>{{newPost}}</p> <!-- Referred as string interporlation  -->
+<textarea rows="5" [value]="newPost" #postInput></textarea>
+<hr>
+<button (click)="onAddPost(postInput)">Add Post</button> <!-- Event listenening is referred as Event Binding -->
+<p>{{ newPost }}</p> <!-- Referred as string interporlation  -->
