@@ -1,5 +1,5 @@
 <h1>Getting started</h1>
-<textarea rows="5" [value]="newPost" #postInput></textarea>
+<textarea rows="5" [(ngModel)]="enteredValue"></textarea> <!-- Two way binding, replaces property binding  -->
 <hr>
 <button (click)="onAddPost(postInput)">Add Post</button> <!-- Event listenening is referred as Event Binding -->
 <p>{{ newPost }}</p> <!-- Referred as string interporlation  -->
