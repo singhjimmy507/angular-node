@@ -19,8 +19,10 @@
 </ul> -->
 
 <!-- <app-post-create></app-post-create> -->
-Welcome! Get Home Insurance
+<mat-card>
+    Welcome! Get Home Insurance
 <form class="example-form">
+
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Where is the property?" value="">
   </mat-form-field>
@@ -33,11 +35,31 @@ Welcome! Get Home Insurance
   <mat-form-field class="example-full-width">
     <input matInput placeholder="First Name" value="">
   </mat-form-field>
+  &nbsp;
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Last Name" value="">
   </mat-form-field>
+  &nbsp;
   <mat-form-field class="example-full-width">
     <input matInput placeholder="DOB" value="">
   </mat-form-field>
+  <br>
+  When do you want your coverage to start ? <br><br>
+  <mat-form-field class="example-full-width">
+      <input matInput placeholder="Start Date" value="">
+  </mat-form-field>
+  <br>
+  <button mat-raised-button color="primary">Back</button>
+  &nbsp;
+  <button mat-raised-button color="primary">Next</button>
 
 </form>
+</mat-card>
+<!-- <br>
+  When do you want your coverage to start ? <br>
+  <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+<br> -->
