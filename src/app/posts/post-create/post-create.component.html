@@ -3,9 +3,9 @@
     <mat-form-field>
         <textarea matInput rows="5" [(ngModel)]="enteredValue"></textarea> <!-- Two way binding, replaces property binding  -->
     </mat-form-field>
-    <button mat-raised-button 
-        color="accent" 
-        (click)="onAddPost(postInput)">Add Post
+    <button mat-raised-button
+        color="accent"
+        (click)="onAddPost()">Add Post
     </button> <!-- Event listenening is referred as Event Binding -->
 </mat-card>
 <hr>
