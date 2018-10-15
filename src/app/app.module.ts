@@ -8,11 +8,15 @@ import {PostCreateComponent} from './posts/post-create/post-create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule} from './material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { ClaimsComponent } from './claims/claims.component';
+import { PropertyInfoComponent } from './property-info/property-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostCreateComponent
+    PostCreateComponent,
+    ClaimsComponent,
+    PropertyInfoComponent
   ],
   imports: [
     BrowserModule,
