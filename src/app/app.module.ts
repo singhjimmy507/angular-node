@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import {PostCreateComponent} from './posts/post-create/post-create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule} from './material';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MaterialModule} from './material';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
-    MaterialModule
+    MaterialModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
