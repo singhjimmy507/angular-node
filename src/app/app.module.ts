@@ -10,13 +10,17 @@ import { MaterialModule} from './material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ClaimsComponent } from './claims/claims.component';
 import { PropertyInfoComponent } from './property-info/property-info.component';
+import { ContactInfoComponent } from './contact-info/contact-info.component';
+import { PersonalInfoComponent } from './personal-info/personal-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostCreateComponent,
     ClaimsComponent,
-    PropertyInfoComponent
+    PropertyInfoComponent,
+    ContactInfoComponent,
+    PersonalInfoComponent
   ],
   imports: [
     BrowserModule,
