@@ -7,10 +7,11 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatCardModule} from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  imports: [MatButtonModule, MatAutocompleteModule, MatIconModule, MatInputModule, MatRadioModule, MatCardModule, MatDatepickerModule, MatNativeDateModule],
+  imports: [MatButtonModule, MatAutocompleteModule, MatIconModule, MatInputModule, MatRadioModule, MatCardModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule],
   // tslint:disable-next-line:max-line-length
-  exports: [MatButtonModule, MatAutocompleteModule, MatIconModule, MatInputModule, MatRadioModule, MatCardModule, MatDatepickerModule, MatNativeDateModule],
+  exports: [MatButtonModule, MatAutocompleteModule, MatIconModule, MatInputModule, MatRadioModule, MatCardModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule],
 })
 export class MaterialModule { }

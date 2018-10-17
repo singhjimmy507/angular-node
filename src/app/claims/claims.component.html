@@ -1,3 +1,67 @@
-<p>
+<!-- <p>
   claims works!
-</p>
+</p> -->
+<h2>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; Claims History</h2>
+<mat-card>
+  <form class="example-full-width" #postForm="ngForm">
+      <mat-radio-group>
+        Have you had any claims in the past 10 years?
+        <br>
+        &nbsp;<mat-radio-button value="1">Yes</mat-radio-button>
+        &nbsp;<mat-radio-button value="2">No</mat-radio-button>
+      </mat-radio-group>
+    <br>
+      <mat-form-field>
+        <mat-select placeholder="What Happened?">
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{food.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+    <mat-form-field class="example-full-width">
+      <input matInput [matDatepicker]="picker1" placeholder="When did it happen?" name="claim_date"  required  ngModel value="">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <br>
+      &nbsp;
+    <button mat-raised-button color="primary" type="submit">Add Claim</button>
+    <br><br>
+    <mat-radio-group>
+        Have you been convicted of fraud or attempted fraud in the last 10 years?
+        <br>
+        &nbsp;<mat-radio-button value="1">Yes</mat-radio-button>
+        &nbsp;<mat-radio-button value="2">No</mat-radio-button>
+      </mat-radio-group>
+      <br><br>
+      <mat-radio-group>
+          Have you had a Home policy cancelled in the last 3 years?
+          <br>
+          &nbsp;<mat-radio-button value="1">Yes</mat-radio-button>
+          &nbsp;<mat-radio-button value="2">No</mat-radio-button>
+        </mat-radio-group>
+        <br>
+        <mat-form-field>
+            <mat-select placeholder="What Happened?">
+              <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+        <mat-form-field class="example-full-width">
+          <input matInput [matDatepicker]="picker2" placeholder="When did it happen?" name="policy_date"  required  ngModel value="">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <br>
+        &nbsp;
+      <button mat-raised-button color="primary" type="submit">Add Policy</button>
+      <br>
+      <br>
+      <button mat-raised-button color="primary">Back</button>
+        &nbsp;
+      <button mat-raised-button color="primary" type="submit">Next</button>
+  </form>
+</mat-card>
