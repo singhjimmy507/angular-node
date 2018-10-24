@@ -13,8 +13,8 @@
     <br>
       <mat-form-field>
         <mat-select placeholder="What Happened?">
-          <mat-option *ngFor="let food of foods" [value]="food.value">
-            {{food.viewValue}}
+          <mat-option *ngFor="let claim of claims" [value]="claim.value">
+            {{claim.viewValue}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -26,7 +26,7 @@
     </mat-form-field>
     <br>
       &nbsp;
-    <button mat-raised-button color="primary" type="submit">Add Claim</button>
+    <button (click) = "onAddClaim()" mat-raised-button color="primary">Add Claim</button>
     <br><br>
     <mat-radio-group>
         Have you been convicted of fraud or attempted fraud in the last 10 years?
@@ -44,8 +44,8 @@
         <br>
         <mat-form-field>
             <mat-select placeholder="What Happened?">
-              <mat-option *ngFor="let food of foods" [value]="food.value">
-                {{food.viewValue}}
+              <mat-option *ngFor="let claim of claims" [value]="claim.value">
+                {{claim.viewValue}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -57,7 +57,8 @@
         </mat-form-field>
         <br>
         &nbsp;
-      <button mat-raised-button color="primary" type="submit">Add Policy</button>
+      <button (click) = "onAddPolicy()" mat-raised-button color="primary">Add Policy</button>
+      {{dumm}}
       <br>
       <br>
       <button mat-raised-button color="primary">Back</button>

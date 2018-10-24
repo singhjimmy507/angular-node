@@ -5,19 +5,25 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './claims.component.html',
   styleUrls: ['./claims.component.css']
 })
-export class ClaimsComponent implements OnInit {
+export class ClaimsComponent {
 
+  dumm = '';
   constructor() { }
-  foods: Food[] = [
+  claims: Claim[] = [
     {value: 'Fire-0', viewValue: 'Fire'},
     {value: 'Flooding-1', viewValue: 'Flooding'},
     {value: 'General-2', viewValue: 'General'}
   ];
-
-  ngOnInit() {
-  }
+  onAddClaim() {
+    alert('Add new claim');
 }
-export interface Food {
+onAddPolicy() {
+  // alert('Add new policy');
+this.dumm = 'Add new policy';
+}
+
+}
+export interface Claim {
   value: string;
   viewValue: string;
 }

@@ -17,7 +17,7 @@ import { HomeComponent } from './home/home.component';
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'claims', component: ClaimsComponent },
-  { path: 'personal-info', component: PostCreateComponent },
+  { path: 'personal-info', component: PersonalInfoComponent },
   { path: 'property-info', component: PropertyInfoComponent },
 ];
 
