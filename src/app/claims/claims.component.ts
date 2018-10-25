@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormGroup, Validators, FormBuilder, FormControl, AbstractControl } from '@angular/forms';
+import { FormArray, FormGroup, Validators, FormBuilder, FormControl, AbstractControl, NgForm } from '@angular/forms';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -24,6 +24,10 @@ export class ClaimsComponent implements OnInit {
     {value: 'General-2', viewValue: 'General'}
   ];
   constructor(private fb: FormBuilder, private api: ApiService) { }
+  onAddClaim(form: NgForm) {
+    // alert('Post added');
+    console.log('Claim Added');
+}
   ngOnInit() {
     this.now = new Date();
     this.claimsForm = this.fb.group({

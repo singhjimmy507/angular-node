@@ -1,42 +1,3 @@
-<!--
-<h2>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; Welcome! Get Home Insurance</h2>
-<mat-card>
-  <form class="example-full-width" (submit)="onAddPost(postForm)" #postForm="ngForm" action="/property-info">
-    <mat-form-field >
-      <input matInput placeholder="Where is the property?" name="location"  required  ngModel value="">
-    </mat-form-field>
-    <br>
-      <mat-radio-group>
-        &nbsp;<mat-radio-button value="1">I own</mat-radio-button>
-        &nbsp;<mat-radio-button value="2">I rent</mat-radio-button>
-      </mat-radio-group>
-      <br>
-    <mat-form-field>
-      <input matInput placeholder="First Name" name="first_name"  required  ngModel value="">
-    </mat-form-field>
-      &nbsp;
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Last Name" name="last_name"  required  ngModel value="">
-    </mat-form-field>
-      &nbsp;
-    <mat-form-field class="example-full-width">
-      <input matInput [matDatepicker]="picker1" placeholder="Date of Birth" name="DOB"  required  ngModel value="">
-      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-      <mat-datepicker #picker1></mat-datepicker>
-    </mat-form-field>
-      <br>
-      When do you want your coverage to start ? <br>
-    <mat-form-field class="example-full-width">
-        <input matInput [matDatepicker]="picker2" placeholder="Start Date" name="start_date"  required  ngModel value="">
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
-      </mat-form-field>
-        <br>
-    <button mat-raised-button color="primary">Back</button>
-      &nbsp;
-      <a href="/property-info"><button mat-raised-button color="primary" type="submit">Next</button></a>
-  </form>
-</mat-card> -->
   <form [formGroup]='basicForm' (submit)="onAddPost(postForm)" #postForm="ngForm">
     <ng-template matStepLabel>Basic information</ng-template>
     <header>
@@ -82,6 +43,7 @@
         </mat-form-field>
       </span>
     <span>
+        <h4>When do you want your coverage to start?</h4>
      <mat-form-field class="example-full-width">
         <input matInput [matDatepicker]="picker2" [min]='now' placeholder="Start Date" name="start_date"  required >
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -89,8 +51,6 @@
       </mat-form-field>
       </span>
     </div>
-
-    <h4>When do you want your coverage to start?</h4>
     <!-- <div class='multiple-spans' formGroupName="coverageStart">
       <span>
         <mat-form-field>

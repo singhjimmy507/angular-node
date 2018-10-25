@@ -15,6 +15,8 @@ import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'claims', component: ClaimsComponent },
@@ -43,6 +45,7 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatExpansionModule,
     MatButtonToggleModule,
     RouterModule.forRoot(appRoutes)
   ],

@@ -1,9 +1,9 @@
 <!-- <p>
   claims works!
 </p> -->
-<h2>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; Claims History</h2>
+<!-- <h2>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; Claims History</h2>
 <mat-card>
-  <form class="example-full-width" #postForm="ngForm">
+  <form class="example-full-width" [formGroup]='claimsForm' #postForm="ngForm">
       <mat-radio-group>
         Have you had any claims in the past 10 years?
         <br>
@@ -65,4 +65,45 @@
         &nbsp;
       <button mat-raised-button color="primary" type="submit">Next</button>
   </form>
-</mat-card>
+</mat-card> -->
+    <form [formGroup]='claimsForm' (submit)="onAddClaim(postForm)" #postForm="ngForm">
+      <ng-template matStepLabel>Claims History</ng-template>
+      <div class='question'>
+        <h4>Have you made a claim in the past 10 years?</h4>
+        <mat-button-toggle-group formControlName='hasMadeClaim' required>
+          <mat-button-toggle *ngFor="let item of ['Yes', 'No']" [value]="item=='Yes'">
+            {{item}}
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div *ngIf="shouldShowField('claimsList')" formArrayName="claims">
+        <mat-card class='question' *ngFor="let claim of claims.controls; let i=index">
+          <div [formGroupName]="i" class='multiple-spans'>
+            <h4>Claim #{{i+1}}</h4>
+            <span>
+              <mat-form-field>
+                <mat-select placeholder="What happened?" formControlName='event' required>
+                  <mat-option *ngFor="let event of ['Fire', 'Flood', 'Aliens', 'Other']" [value]="i">{{event}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </span>
+            <span>
+              <mat-form-field>
+                <input matInput [matDatepicker]="claimPicker" name="claimDate{{i}}" placeholder="When did it happen?"
+                  formControlName='date' [max]='now' required>
+                <mat-datepicker-toggle matSuffix [for]="claimPicker"></mat-datepicker-toggle>
+                <mat-datepicker #claimPicker></mat-datepicker>
+              </mat-form-field>
+            </span>
+          </div>
+          <mat-action-row>
+            <button class='float-right' type='button' mat-button color="warn" (click)='removeClaim(i)' *ngIf='claims.length > 1'>Delete</button>
+            <div class='clearfix'></div>
+          </mat-action-row>
+        </mat-card>
+        <button id='add-claim-btn' type='button' mat-button color="primary" (click)="addClaim()">Add another claim</button>
+        <div class='clearfix'></div>
+      </div>
+      <small *ngIf="DEBUG">Form status: {{ claimsForm.status }}</small>
+      <a href="/property-info"><button mat-raised-button color="primary" type="submit">Next</button></a>
+    </form>
