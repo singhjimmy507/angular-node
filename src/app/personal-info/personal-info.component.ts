@@ -57,8 +57,8 @@ export class PersonalInfoComponent implements OnInit {
   onAddPost(form: NgForm) {
       // alert('Post added');
       console.log(form.value.location);
-      console.log(form.value.firstname);
-      console.log(form.value.lastname);
+      console.log(form.value.firstName);
+      console.log(form.value.lastName);
       console.log(form.value.ownershipStatus);
       this.newPost = this.enteredValue;
   }

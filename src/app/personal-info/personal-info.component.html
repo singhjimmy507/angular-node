@@ -1,14 +1,14 @@
 <!--
 <h2>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; Welcome! Get Home Insurance</h2>
 <mat-card>
-  <form [formGroup]='basicForm' class="example-full-width" (ngSubmit)='onSubmit($event, 0)' >
+  <form class="example-full-width" (submit)="onAddPost(postForm)" #postForm="ngForm" action="/property-info">
     <mat-form-field >
       <input matInput placeholder="Where is the property?" name="location"  required  ngModel value="">
     </mat-form-field>
     <br>
-      <mat-radio-group name="ownershipStatus">
-        &nbsp;<mat-radio-button ngModel >I own</mat-radio-button>
-        &nbsp;<mat-radio-button ngModel>I rent</mat-radio-button>
+      <mat-radio-group>
+        &nbsp;<mat-radio-button value="1">I own</mat-radio-button>
+        &nbsp;<mat-radio-button value="2">I rent</mat-radio-button>
       </mat-radio-group>
       <br>
     <mat-form-field>
@@ -20,14 +20,14 @@
     </mat-form-field>
       &nbsp;
     <mat-form-field class="example-full-width">
-      <input matInput [matDatepicker]="picker1" placeholder="Date of Birth" name="DOB"  required >
+      <input matInput [matDatepicker]="picker1" placeholder="Date of Birth" name="DOB"  required  ngModel value="">
       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
       <br>
       When do you want your coverage to start ? <br>
     <mat-form-field class="example-full-width">
-        <input matInput [matDatepicker]="picker2" placeholder="Start Date" name="start_date"  required >
+        <input matInput [matDatepicker]="picker2" placeholder="Start Date" name="start_date"  required  ngModel value="">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
@@ -37,7 +37,7 @@
       <a href="/property-info"><button mat-raised-button color="primary" type="submit">Next</button></a>
   </form>
 </mat-card> -->
-  <form [formGroup]='basicForm' (ngSubmit)='onSubmit($event, 0)' (submit)="onAddPost(postForm)" #postForm="ngForm">
+  <form [formGroup]='basicForm' (submit)="onAddPost(postForm)" #postForm="ngForm">
     <ng-template matStepLabel>Basic information</ng-template>
     <header>
       <h1>Welcome! Get {{ insuranceType }}</h1>
@@ -45,7 +45,7 @@
     <h4>Where is the property?</h4>
     <div class='location'>
       <mat-form-field class='location-field'>
-        <mat-select placeholder="Location" name="location" formControlName='location' required>
+        <mat-select placeholder="Location" name="location" required  formControlName="location">
           <mat-option *ngFor="let place of places" [value]="place.value">
             {{place.viewValue}}
           </mat-option>
@@ -54,8 +54,8 @@
     </div>
 
     <div class='question'>
-      <mat-radio-group name="ownershipStatus" required >
-        &nbsp;<mat-radio-button value="own" #status >I own</mat-radio-button>
+      <mat-radio-group formControlName="ownershipStatus" required>
+        &nbsp;<mat-radio-button value="own" >I own</mat-radio-button>
         &nbsp;<mat-radio-button value="rent">I rent</mat-radio-button>
       </mat-radio-group>
     </div>
@@ -63,21 +63,20 @@
     <div class="multiple-spans">
       <span>
         <mat-form-field>
-          <input matInput type="text" name="firstname" placeholder="First name" #fname
-            required>
+          <input matInput type="text" name="firstname" placeholder="First name" #fname formControlName="firstName" required>
           <mat-error *ngIf="fname.invalid">Please enter your first name.</mat-error>
         </mat-form-field>
       </span>
       <span>
         <mat-form-field>
-          <input matInput type="text" name="lastname" placeholder="Last name" #lName required>
+          <input matInput type="text" name="lastname" placeholder="Last name" #lName formControlName="lastName" required>
           <mat-error *ngIf="lName.invalid">Please enter your last name.</mat-error>
         </mat-form-field>
       </span>
       <span>
         <mat-form-field>
-          <input matInput [matDatepicker]="dobPicker" [max]='now' name="dateofbirth" placeholder="Date of birth"
-            formControlName='dob' required>
+          <input matInput [matDatepicker]="dobPicker" [max]='now' name="dateofbirth" placeholder="Date of birth" formControlName="dob"
+           required>
           <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
           <mat-datepicker #dobPicker></mat-datepicker>
         </mat-form-field>
