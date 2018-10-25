@@ -81,6 +81,13 @@
           <mat-datepicker #dobPicker></mat-datepicker>
         </mat-form-field>
       </span>
+    <span>
+     <mat-form-field class="example-full-width">
+        <input matInput [matDatepicker]="picker2" [min]='now' placeholder="Start Date" name="start_date"  required >
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      </span>
     </div>
 
     <h4>When do you want your coverage to start?</h4>
