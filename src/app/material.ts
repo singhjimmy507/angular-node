@@ -8,10 +8,12 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule} from '@angular/material';
 import {MatSelectModule} from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  imports: [MatButtonModule, MatAutocompleteModule, MatIconModule, MatInputModule, MatRadioModule, MatCardModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule],
+  imports: [MatButtonModule, MatAutocompleteModule, MatIconModule, MatInputModule, HttpClientModule, MatRadioModule, MatCardModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule],
   // tslint:disable-next-line:max-line-length
-  exports: [MatButtonModule, MatAutocompleteModule, MatIconModule, MatInputModule, MatRadioModule, MatCardModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule],
+  exports: [MatButtonModule, MatAutocompleteModule, MatIconModule, MatInputModule, HttpClientModule, MatRadioModule, MatCardModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule],
 })
 export class MaterialModule { }

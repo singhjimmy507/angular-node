@@ -1,25 +1,14 @@
-<!-- <h1>Getting started</h1>
-<mat-card>
-    <mat-form-field>
-        <textarea matInput rows="5" [(ngModel)]="enteredValue"></textarea>
-    </mat-form-field>
-    <button mat-raised-button
-        color="accent"
-        (click)="onAddPost()">Add Post
-    </button>
-</mat-card>
-<hr>
-<p>{{ newPost }}</p> Referred as string interporlation  -->
+<!--
 <h2>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; Welcome! Get Home Insurance</h2>
 <mat-card>
-  <form class="example-full-width" (submit)="onAddPost(postForm)" #postForm="ngForm" action="/property-info">
+  <form [formGroup]='basicForm' class="example-full-width" (ngSubmit)='onSubmit($event, 0)' >
     <mat-form-field >
       <input matInput placeholder="Where is the property?" name="location"  required  ngModel value="">
     </mat-form-field>
     <br>
-      <mat-radio-group>
-        &nbsp;<mat-radio-button value="1">I own</mat-radio-button>
-        &nbsp;<mat-radio-button value="2">I rent</mat-radio-button>
+      <mat-radio-group name="ownershipStatus">
+        &nbsp;<mat-radio-button ngModel >I own</mat-radio-button>
+        &nbsp;<mat-radio-button ngModel>I rent</mat-radio-button>
       </mat-radio-group>
       <br>
     <mat-form-field>
@@ -31,14 +20,14 @@
     </mat-form-field>
       &nbsp;
     <mat-form-field class="example-full-width">
-      <input matInput [matDatepicker]="picker1" placeholder="Date of Birth" name="DOB"  required  ngModel value="">
+      <input matInput [matDatepicker]="picker1" placeholder="Date of Birth" name="DOB"  required >
       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
       <br>
       When do you want your coverage to start ? <br>
     <mat-form-field class="example-full-width">
-        <input matInput [matDatepicker]="picker2" placeholder="Start Date" name="start_date"  required  ngModel value="">
+        <input matInput [matDatepicker]="picker2" placeholder="Start Date" name="start_date"  required >
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
@@ -47,19 +36,83 @@
       &nbsp;
       <a href="/property-info"><button mat-raised-button color="primary" type="submit">Next</button></a>
   </form>
-</mat-card>
-<!--
-<p>{{ newPost }}</p> -->
-<!-- <br>
-  When do you want your coverage to start ? <br>
-  <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-<br>
-<a href="/home">Home</a> &nbsp;
-<a href="/personal-info">Personal Info</a> &nbsp;
-<a href="/property-info">Property Info</a> &nbsp;
-<a href="/claims">Claims</a> &nbsp;
- -->
+</mat-card> -->
+  <form [formGroup]='basicForm' (ngSubmit)='onSubmit($event, 0)' (submit)="onAddPost(postForm)" #postForm="ngForm">
+    <ng-template matStepLabel>Basic information</ng-template>
+    <header>
+      <h1>Welcome! Get {{ insuranceType }}</h1>
+    </header>
+    <h4>Where is the property?</h4>
+    <div class='location'>
+      <mat-form-field class='location-field'>
+        <mat-select placeholder="Location" name="location" formControlName='location' required>
+          <mat-option *ngFor="let place of places" [value]="place.value">
+            {{place.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class='question'>
+      <mat-radio-group name="ownershipStatus" required >
+        &nbsp;<mat-radio-button value="own" #status >I own</mat-radio-button>
+        &nbsp;<mat-radio-button value="rent">I rent</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="multiple-spans">
+      <span>
+        <mat-form-field>
+          <input matInput type="text" name="firstname" placeholder="First name" #fname
+            required>
+          <mat-error *ngIf="fname.invalid">Please enter your first name.</mat-error>
+        </mat-form-field>
+      </span>
+      <span>
+        <mat-form-field>
+          <input matInput type="text" name="lastname" placeholder="Last name" #lName required>
+          <mat-error *ngIf="lName.invalid">Please enter your last name.</mat-error>
+        </mat-form-field>
+      </span>
+      <span>
+        <mat-form-field>
+          <input matInput [matDatepicker]="dobPicker" [max]='now' name="dateofbirth" placeholder="Date of birth"
+            formControlName='dob' required>
+          <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+          <mat-datepicker #dobPicker></mat-datepicker>
+        </mat-form-field>
+      </span>
+    </div>
+
+    <h4>When do you want your coverage to start?</h4>
+    <!-- <div class='multiple-spans' formGroupName="coverageStart">
+      <span>
+        <mat-form-field>
+          <mat-select placeholder="Year" formControlName='year' (selectionChange)="updateDaysInMonth()" required>
+            <mat-option *ngFor="let y of years" [value]="y">{{y}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </span>
+      <span>
+        <mat-form-field>
+          <mat-select placeholder="Month" formControlName='month' (selectionChange)="updateDaysInMonth()" required>
+            <mat-option *ngFor="let m of months" [value]="m.value">{{m.viewValue}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </span>
+      <span>
+        <mat-form-field>
+          <mat-select placeholder="Date" formControlName='day' [value]='basicForm.get("coverageStart.day")'
+            required>
+            <mat-option *ngFor="let d of daysInMonth" [value]="d">{{d}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </span>
+    </div>
+    <small *ngIf="DEBUG">Form status: {{ basicForm.status }}</small> -->
+    <!-- <mat-action-row>
+      <button class='float-right' type='submit' mat-button color="primary" matStepperNext>Next</button>
+      <button class='float-right' type='button' mat-button (click)="debug()" *ngIf="DEBUG">Debug</button>
+    </mat-action-row> -->
+    <a href="/property-info"><button mat-raised-button color="primary" type="submit">Next</button></a>
+  </form>
